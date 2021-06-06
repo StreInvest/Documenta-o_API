@@ -307,7 +307,7 @@
 
 #### status `204 No Content`
 
-* não retorna nada
+* não retorna nada (succeso)
 
 #### Status `404Not Found`
 
@@ -344,4 +344,199 @@
 </html>
 ```
 
+# Consorcio - emissor do investimento
+
+## `GET` consorcio
+
+![image](https://user-images.githubusercontent.com/54999837/120930410-8196d400-c6c3-11eb-8c77-2739443775fe.png)
+
+#### Status `200 Sucess`
+
+```json
+{
+    "response": [
+        {
+            "_id": "6097ffb54ee8cc407bb8109c",
+            "consortium_name": "caixa economica federal",
+            "created_at": "2021-05-09T15:28:53.477Z",
+            "updated_at": "2021-05-09T15:28:53.477Z",
+            "__v": 0
+        }
+    ],
+    "paginate": {
+        "limit": "1",
+        "page": 1,
+        "totalCurrentPage": "1"
+    },
+    "status": 200
+}
+```
+
+#### Status `401 Unauthorized`
+
+```json
+{
+    "response": "you don't have access",
+    "status": 401
+}
+```
+## `POST` consorcio
+
+![image](https://user-images.githubusercontent.com/54999837/120930629-80b27200-c6c4-11eb-8bd1-62eea36953ad.png)
+
+### Body
+
+```json
+{
+    "consortium_name": "para ser excluido 2"
+}
+```
+#### Status `201 created`
+
+```json
+{
+    "response": {
+        "_id": "60bcebe1035afd00158ba2ba",
+        "consortium_name": "para ser excluido 2",
+        "created_at": "2021-06-06T15:38:09.138Z",
+        "updated_at": "2021-06-06T15:38:09.138Z",
+        "__v": 0
+    },
+    "status": 201
+}
+```
+
+#### Status `500 Internal Server Error` - Consorcio já existente
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<title>Error</title>
+</head>
+
+<body>
+	<pre>Internal Server Error</pre>
+</body>
+
+</html>
+```
+
+#### Status `401 Unauthorized`
+
+```json
+{
+    "response": "you don't have access",
+    "status": 401
+}
+```
+
+
+## `PUT` consorcio
+
+![image](https://user-images.githubusercontent.com/54999837/120930851-7349b780-c6c5-11eb-811e-322f2f989e56.png)
+
+### Body
+
+```json
+{
+    "consortium_name": "casas bahia - atualizado"
+}
+```
+
+#### Status `200 Sucess`
+
+```json
+{
+    "response": {
+        "_id": "60bcebda035afd00158ba2b9",
+        "consortium_name": "casas bahia - atualizado",
+        "created_at": "2021-06-06T15:38:02.828Z",
+        "updated_at": "2021-06-06T15:45:15.698Z",
+        "__v": 0
+    },
+    "status": 200
+}
+```
+
+#### Status `400 Bad Request` dados já foi alterado ou parametros enviado incorretamente via body
+
+```json
+{
+    "response": "it was not possible to update, check the data is being sent correctly",
+    "status": 400
+}
+```
+#### Status `401 Unauthorized`
+
+```json
+{
+    "response": "you don't have access",
+    "status": 401
+}
+```
+
+#### Status `500 Internal Server Error` - ID Invalido
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<title>Error</title>
+</head>
+
+<body>
+	<pre>Internal Server Error</pre>
+</body>
+
+</html>
+```
+
+## `DELETE` consorcio
+
+![image](https://user-images.githubusercontent.com/54999837/120931046-46e26b00-c6c6-11eb-83f6-eaf55bfbcc65.png)
+
+
+#### status `204 No Content`
+
+* não retorna nada (succeso)
+
+#### Status `404Not Found`
+
+```json 
+{
+    "response": "User already deleted",
+    "status": 404
+}
+```
+
+#### Status `401 Unauthorized`
+
+```json
+{
+    "response": "you don't have access",
+    "status": 401
+}
+```
+#### Status `500 Internal Server Error` - ID incorreto
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<title>Error</title>
+</head>
+
+<body>
+	<pre>Internal Server Error</pre>
+</body>
+
+</html>
+```
 
